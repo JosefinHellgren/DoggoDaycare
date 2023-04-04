@@ -1,0 +1,79 @@
+*{
+  align-items: center;
+}
+
+
+#dogImage{
+  width: 100px;
+  height: 100px;
+  filter: grayscale(100%);
+  border-radius: 50%;
+  border: 2px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.listItem{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+ margin: 10px;
+  justify-content: space-evenly;
+  background-color: rgba(255, 255, 255, 0.2);
+ 
+  border-radius: 10px;
+  padding: 20px;
+}
+
+body{
+  background-color: rgb(91, 109, 87);
+}
+
+
+
+#textInList{
+display: grid;
+grid-template-rows: 1fr;
+
+}
+
+#BigdogImage{
+width: 200px;
+height: 200px;
+
+}
+
+
+#BiglistItem{
+  background-color: gray;
+  
+}
+
+#bigtextInList{
+display: grid;
+grid-template-rows: 2fr;
+  font-size: medium;
+  color: beige;
+}
+
+#welcomeImage{
+width: 400px;
+height: 400px;
+border-radius: 50%;
+border: 2px solid black;
+
+}
+
+#navigation_bar{
+  top: 0px;
+  position: fixed;
+
+  margin: 10px;
+height: 70px;
+width: 100%;
+background-color: rgb(145, 156, 145);
+color: white;
+
+}
+
+.Ytterlista{
+  width: 100%;
+}
