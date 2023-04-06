@@ -14,7 +14,8 @@ let text =""
 
 
 const ApiCall =(props)=> {
-const [dogsData,setDogsData] = useState([]);
+  console.log(props.dogData);
+/*const [dogsData,setDogsData] = useState([]);*/
 let navigate = useNavigate();
 
 //here first look if the data there is dogData in Local Storage
@@ -25,7 +26,7 @@ let navigate = useNavigate();
       const storedData = localStorage.getItem('myData');
       if (storedData) {
         const parsedData = JSON.parse(storedData);
-        setDogsData(parsedData.record);
+        props.updateDogsData(parsedData.record);
         console.log("now we checked if there where any data in the local storage.");
       }else{
   console.log("okey so there where no data in the local storage");
@@ -37,10 +38,10 @@ let navigate = useNavigate();
 
           localStorage.setItem('myData', JSON.stringify(data));
           // save the data to the local storage
-            setDogsData(data.record);
+            props.updateDogsData(data.record);
         });
         
-console.log(dogsData);
+console.log(props.dogData);
       }
     },[])
 
@@ -63,7 +64,7 @@ console.log(dogsData);
           return dog;
         });
         localStorage.setItem('myData', JSON.stringify({record: updatedData}));
-        setDogsData(updatedData);
+        props.updateDogsData(updatedData);
       }
     };
 
@@ -75,9 +76,9 @@ console.log(dogsData);
     return(
         <div id="diven">
       
-{dogsData.length > 0 && (
+{props.dogData.length > 0 && (
         <ul className="Ytterlista">
-          {dogsData.map(dog  => (
+          {props.dogData.map(dog  => (
             <div id="dogContainer">
             <li className="listItem" key={dog.name}>
               <img id="dogImage" src={dog.img} alt="" /> <h1 >{dog.name}</h1> 

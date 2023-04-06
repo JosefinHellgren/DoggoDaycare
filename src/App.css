@@ -19,9 +19,9 @@ body{
 
 /*NavigationBar*/
 #navigation_bar{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-between;
+  display: flex;
+ flex-direction: row;
+  justify-content: flex-end ;
   height: 70px;
   
   
@@ -36,21 +36,53 @@ body{
  
 
 }
+#navigation_bar img{
+  border-radius: 70%;
+    margin-right: auto; 
+    margin-left: 1em;
+ 
+  
+}
 
 .navBarButtons{
-  margin-top: 10px;
+  margin-top: 15px;
   border-radius: 20px;
   border: 1px solid black;
+  margin-right: 1em;
 }
 
-#logo{
-  margin-top: 10px;
-  padding-left: 10px;
-  color: #ffffff;
-  font-size: 40px;
-  
-  padding: 0;
+
+/*FirstPage*/
+
+#firstpageDay{
+  color: white;
+  margin: auto;
+  margin-left: 10px;
 }
+
+.firstpage{
+  margin-top: 80px;
+}
+
+#present-dog-container{
+display: flex;
+flex-direction: row;
+overflow-x: auto;
+
+}
+
+.firstpage #dogImage{
+  border: 5px solid rgb(64, 230, 64);
+}
+
+#present-todays li{
+  background-color: white;
+  padding: 15px;
+  margin: 19px
+
+
+}
+
 
 
  /*Welcome*/
@@ -87,7 +119,7 @@ body{
       #dogPresentation{
         display: grid;
         grid-template-columns: 1fr;
-        
+        color: white;
       margin-top: 100px;
 
 
@@ -100,6 +132,7 @@ body{
         padding: auto;
         margin-left: 30%;
         font-size: 20px;
+        color: white;
       }
 
       #textContainer li{
@@ -120,11 +153,17 @@ body{
       font-size: large;
       text-align: start;
       font-weight: bold;
+      color: white;
     }
     .grid-container ul li {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       border: 1px solid black;
       padding: 10px;
       border-bottom: 1px solid #020202;
+      margin: 10px;
+      
     }
     
     .grid-container li {
@@ -235,7 +274,7 @@ body{
     @media (min-width: 600px) {
     .Ytterlista{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
 
 
     }
@@ -254,6 +293,17 @@ body{
     #formButton{
       width: 40%
 
+    }
+
+    .grid-container ul li {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border: 1px solid black;
+      padding: 10px;
+      border-bottom: 1px solid #020202;
+      margin: 10px;
+      width: 50% ;
     }
 
     }
