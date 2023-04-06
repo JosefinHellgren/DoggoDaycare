@@ -8,45 +8,27 @@ import DetailedList from './components/DetailedList.jsx'
 import NavBar from './components/NavBar'
 import { Routes,Route } from 'react-router-dom'
 import Schedule from './components/Schedule'
+import { useLocation } from 'react-router-dom'
+import FirstPage from './components/FirstPage'
 
 
 
 function App() {
-  const WELCOME = 'welcome', DOGLIST = 'apiCall', DETAILEDLIST = 'detailedList';
-  const [currentScreen, setCurrentScreen] = useState(WELCOME);
+  
   const [selectedDog,setSelectedDog] = useState(null)
   
+  const location = useLocation();
+  const isWelcomePage = location.pathname === '/';
 
 
 
-  let content = null;
+
+ 
 
   function selectDoggie(newData) {
     setSelectedDog(newData);
   }
 
-
-
-  
-
-
-
-
-/*
-  switch(currentScreen) {
-    case WELCOME :
-      content = <Welcome nextScreen={() => setCurrentScreen(DOGLIST) }/>;
-      break;
-    case DOGLIST:
-      content = <ApiCall nextScreen={()=>setCurrentScreen(DETAILEDLIST)} data={selectedDog} onUpdateData={selectDoggie} />;
-      break;
-    case DETAILEDLIST:
-        content = <DetailedList data={selectedDog} />;
-    break;    
-       
-    default:
-      content = null;
-  }*/
 
 
   
@@ -56,7 +38,8 @@ function App() {
     
     <div className="App">
      
-    <NavBar/>
+     {isWelcomePage ? null : <NavBar />}
+    
 
     <Routes>
 
@@ -64,6 +47,7 @@ function App() {
       <Route path="/alldogs" element={<ApiCall data={selectedDog} onUpdateData={selectDoggie}/>}></Route>
       <Route path="/specialdog" element={<DetailedList data={selectedDog}/>}> </Route>
       <Route path='/schedule' element={<Schedule/>}></Route>
+      <Route path='/firstpage' element={<FirstPage/>}></Route>
     </Routes>
       
 

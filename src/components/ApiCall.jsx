@@ -8,6 +8,11 @@ let text =""
 
 
 
+
+
+
+
+
 const ApiCall =(props)=> {
 const [dogsData,setDogsData] = useState([]);
 let navigate = useNavigate();
@@ -39,28 +44,32 @@ console.log(dogsData);
       }
     },[])
 
+    
+
     function handleClick(dog) {
       props.onUpdateData(dog);
       navigate("/specialdog");
     }
 
-   /* const updatePresentValue =()=>{
 
-      useEffect(()=>{
-        fetch("https://api.jsonbin.io/v3/b/6422b9c8c0e7653a0597d126",{method :'PUT',
-        }
-      
-    },[])}*/
-    //here i want to change the data in the api, then make a new apicall to catch the updated data.
-    //so i need to get the choosen dog in the data an change that dogs present value/data.
-  
+    const changePresentInLocalStorage = (chipNumber) => {
+      const storedData = localStorage.getItem('myData');
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        const updatedData = parsedData.record.map((dog) => {
+          if (dog.chipNumber === chipNumber) {
+            dog.present = !dog.present;
+          }
+          return dog;
+        });
+        localStorage.setItem('myData', JSON.stringify({record: updatedData}));
+        setDogsData(updatedData);
+      }
+    };
+
 
    
-
-   
-// lets put a little light och fun symbol to show if the dog is here.
-//can we put a state on all the dogs but have different values on all of them?
-   
+    
    
    
     return(
@@ -69,19 +78,23 @@ console.log(dogsData);
 {dogsData.length > 0 && (
         <ul className="Ytterlista">
           {dogsData.map(dog  => (
-            <li className="listItem" key={dog.name}><div id="textInList"> Name:  {dog.name}  Breed:  {dog.breed} Present: {dog.present ? 'yes' : 'no'}
-            </div>
-            <img id="dogImage" src={dog.img} alt="" />
+            <div id="dogContainer">
+            <li className="listItem" key={dog.name}>
+              <img id="dogImage" src={dog.img} alt="" /> <h1 >{dog.name}</h1> 
+             
+            
+            
             
             {dog.present ? (
-              <button >Check Out</button>
+              <button className="out"  onClick={()=>changePresentInLocalStorage(dog.chipNumber)}>here</button>
             ) : (
-              <button >Check In</button>
+              <button className="in" onClick={()=>changePresentInLocalStorage(dog.chipNumber)}>not here</button>
             )}
-            <button onClick={()=>handleClick(dog)}>select dog</button>
+            <button id="moreInfoButton" onClick={()=>handleClick(dog)}>more info</button>
             
            
             </li>
+            </div>
            
           ))}
         </ul>
