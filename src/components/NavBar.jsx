@@ -5,18 +5,20 @@ import ApiCall from "./ApiCall";
 
 const NavBar =() =>{
 
+    //how do i make navbar not appear at the welcom page.
+
 
 
 
 
     return(
         <div id="navigation_bar">
-
+            <h3 id="logo">Dogs</h3>
             <Link to="/alldogs">
-           <button>all dogs</button>
+           <button className="navBarButtons">all dogs</button>
             </Link>
             <Link to="/schedule">
-            <button>schedule</button>
+            <button className="navBarButtons">schedule</button>
             </Link>
             
 
