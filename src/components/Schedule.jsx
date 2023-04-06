@@ -36,23 +36,10 @@ setTimeInputValue("");
     
 }
 
-const Schedule = () => {
-    
-        const [monday, setmonday] = useState(
-          JSON.parse(localStorage.getItem("monday")) || []
-        );
-        const [tuesday, settuesday] = useState(
-          JSON.parse(localStorage.getItem("tuesday")) || []
-        );
-        const [wednesday, setwednesday] = useState(
-          JSON.parse(localStorage.getItem("wednesday")) || []
-        );
-        const [thursday, setthursday] = useState(
-          JSON.parse(localStorage.getItem("thursday")) || []
-        );
-        const [friday, setfriday] = useState(
-          JSON.parse(localStorage.getItem("friday")) || []
-        );
+const Schedule = (props) => {
+    const { monday, tuesday, wednesday, thursday, friday } = props.schedule;
+  const { setmonday, settuesday, setwednesday, setthursday, setfriday } = props.setSchedule;
+
     
    
 
@@ -61,7 +48,7 @@ const Schedule = () => {
     const createSchedule = (day,time,text)=>{
 
         console.log(day,time,text);
-        switch(day) {
+        switch(day.toLowerCase()) {
             case "monday" :
               setmonday([...monday,time+" "+text])
               break;
@@ -83,17 +70,10 @@ const Schedule = () => {
           }
 
     }
+  
+
    
-
-    useEffect(() => {
-        // save data to local storage when the lists change
-        localStorage.setItem("monday", JSON.stringify(monday));
-        localStorage.setItem("tuesday", JSON.stringify(tuesday));
-        localStorage.setItem("wednesday", JSON.stringify(wednesday));
-        localStorage.setItem("thursday", JSON.stringify(thursday));
-        localStorage.setItem("friday", JSON.stringify(friday));
-      }, [monday, tuesday, wednesday, thursday, friday]);
-
+     
     return (
 
         <div className="grid-container">
@@ -102,35 +82,43 @@ const Schedule = () => {
                 {/* Render the list */}
                 <ul>
                     {monday.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}>{item}
+                        <button onClick={() => setmonday(monday.filter((_, i) => i !== index))}>x</button></li>
                     ))}
                 </ul>
                 <hr />
                 <div className="header">Tuesday</div>
                 <ul>
                     {tuesday.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}>{item}
+                        <button onClick={() => settuesday(tuesday.filter((_, i) => i !== index))}>x</button>
+                        </li>
                     ))}
                 </ul>
                 <hr />
                 <div className="header">Wednesday</div>
                 <ul>
                     {wednesday.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}>{item}
+                        <button onClick={() => setwednesday(wednesday.filter((_, i) => i !== index))}>x</button>
+                        </li>
                     ))}
                 </ul>
                 <hr />
                 <div className="header">Thursday</div>
                 <ul>
                     {thursday.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}>{item}
+                        <button onClick={() => setthursday(thursday.filter((_, i) => i !== index))}>x</button>
+                        </li>
                     ))}
                 </ul>
                 <hr />
                 <div className="header">Friday</div>
                 <ul>
                     {friday.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}>{item}
+                        <button onClick={() => setfriday(friday.filter((_, i) => i !== index))}>x</button></li>
                     ))}
                 </ul>
                 <hr />

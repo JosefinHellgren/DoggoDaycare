@@ -1,6 +1,8 @@
 import DetailedList from "./DetailedList";
 import { Routes,Route,Link } from "react-router-dom";
 import ApiCall from "./ApiCall";
+import dogPaw from '../assets/dogpaw.png'
+import { useNavigate } from "react-router-dom";
 
 
 const NavBar =() =>{
@@ -8,12 +10,20 @@ const NavBar =() =>{
     //how do i make navbar not appear at the welcom page.
 
 
+    let navigate = useNavigate();
 
+    function clickImage (){
+        navigate("/firstpage");
+
+    }
 
 
     return(
         <div id="navigation_bar">
-            <h3 id="logo">Dogs</h3>
+           
+           <img onClick={clickImage} src={dogPaw}></img>
+           
+            
             <Link to="/alldogs">
            <button className="navBarButtons">all dogs</button>
             </Link>
