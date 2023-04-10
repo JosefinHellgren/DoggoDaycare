@@ -42,10 +42,15 @@ const Welcome = (props)=>{
 
     return(
 <section id='welcome-container'>
-    
+
    <Link to="/firstpage">
+  
    <img id='welcomeImage' src={dogwalker} alt="" />
+  
 </Link>
+<h1><span id='doggodaycare'>Doggo Daycare</span>
+  <br/>
+We take care of your dog.</h1>
 </section>
     )
 }
