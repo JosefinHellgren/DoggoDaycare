@@ -29,7 +29,7 @@ const [theDaysName,setTheDaysName] = useState();
 
 const today = new Date();
 
-let daysOfTheWeek = "monday"/*["sunday","monday","tuesday","wednesday","thursday","friday", "saturday"][today.getDay()];*/
+let daysOfTheWeek = ["sunday","monday","tuesday","wednesday","thursday","friday", "saturday"][today.getDay()];
 
 
 console.log(daysOfTheWeek);
