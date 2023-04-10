@@ -20,19 +20,19 @@ function App() {
   const location = useLocation();
   const isWelcomePage = location.pathname === '/';
   const [monday, setmonday] = useState(
-    JSON.parse(localStorage.getItem("monday")) || []
+    JSON.parse(localStorage.getItem("monday")) || ["08:00 Morning walk", "12:00 Grooming"]
   );
   const [tuesday, settuesday] = useState(
-    JSON.parse(localStorage.getItem("tuesday")) || []
+    JSON.parse(localStorage.getItem("tuesday")) || ["09:00 Morning walk", "12:00 Lunch"]
   );
   const [wednesday, setwednesday] = useState(
-    JSON.parse(localStorage.getItem("wednesday")) || []
+    JSON.parse(localStorage.getItem("wednesday")) || ["08:00 Run in forrest", "12:00 Agility"]
   );
   const [thursday, setthursday] = useState(
-    JSON.parse(localStorage.getItem("thursday")) || []
+    JSON.parse(localStorage.getItem("thursday")) || ["08:00 Art class", "12:00 Goat Yoga"]
   );
   const [friday, setfriday] = useState(
-    JSON.parse(localStorage.getItem("friday")) || []
+    JSON.parse(localStorage.getItem("friday")) || ["13:00 Adventure ", "16:00 Bath"]
   );
 
   useEffect(() => {

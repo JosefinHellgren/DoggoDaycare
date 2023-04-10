@@ -22,11 +22,6 @@ const [theDaysName,setTheDaysName] = useState();
 
 
 
-
-
-
-
-
 const today = new Date();
 
 let daysOfTheWeek = ["sunday","monday","tuesday","wednesday","thursday","friday", "saturday"][today.getDay()];
@@ -105,10 +100,11 @@ default:
 <div id="present-todays">
     {currentDayList.map(day  => (
            
-            <li  key={day}>
+            <Link to='/schedule'><li  key={day}>
                {day}
             
             </li>
+            </Link>
             
           ))}
     </div>
